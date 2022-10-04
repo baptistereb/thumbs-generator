@@ -21,9 +21,9 @@ else
   echo -e "\033[31mPas de paramétre de nouveau répertoire \033[43m=>\033[0m automatiquement à \033[34m\"thumbs\" \033[0m"
 fi
 
-if test -n "$2"
+if test -n "$3"
 then
-  size=$2
+  size=$3
 else
   echo -e "\033[31mPas de paramétre de taille             \033[43m=>\033[0m automatiquement à \033[34m3 Kb\033[0m"
 fi
@@ -43,12 +43,8 @@ for file in `ls -R $rep`; do
    if test -f $rep"/"$file 
    then
       Convert $rep"/"$file $rep"/"$newrep $size
-      echo "document : "$file >> $rep"/"$newrep"/"temp_file_thumbs_generator
+      echo "document : "$file >> $rep"/"$newrep"/"
    else
       echo -e "\033[33mNon traité car pas un fichier ordinaire : \033[1m"$file"\033[0m" >> $rep"/"$newrep"/"temp_file_thumbs_generator
    fi
 done
-
-#cat $rep"/"$newrep"/"temp_file_thumbs_generator
-
-rm $rep"/"$newrep"/"temp_file_thumbs_generator
